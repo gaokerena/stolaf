@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Report System</title>
+  <title>Welcome</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id="content"></div>
+  <div id="content">
+    <h2>Enter PIN to continue</h2>
+    <input type="password" id="pinInput" placeholder="Enter PIN" />
+    <button id="pinSubmit">Submit</button>
+    <p id="pinMessage"></p>
+  </div>
 
-  <nav class="bottom-nav">
-    <button onclick="showInput()">Input</button>
-    <button onclick="showOutput()">Output</button>
-  </nav>
-
-  <script src="script.js"></script>
+  <script src="index_script.js"></script>
 </body>
 </html>
