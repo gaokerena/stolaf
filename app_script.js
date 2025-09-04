@@ -47,7 +47,7 @@ function showOutput() {
 
       // Build table
       let html = `
-        <h2>Reports</h2>
+        <h2>Corrections en cours</h2>
         <table class="outputTable">
           <thead>
             <tr>
