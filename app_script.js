@@ -7,10 +7,16 @@ function showSection(contentHTML) {
   container.innerHTML = contentHTML;
 }
 
+function setActiveNav(buttonIndex) {
+  const buttons = document.querySelectorAll(".navbutton");
+  buttons.forEach((btn, i) => btn.classList.toggle("active", i === buttonIndex));
+}
+
 function showInput() {
+  setActiveNav(2);
   const pin = localStorage.getItem("pin");
   showSection(`
-    <h2>Reporter un bug</h2>
+    <h2>Submit Report</h2>
     <form id="inputForm">
       <input type="text" id="criticite" placeholder="Criticité" required>
       <textarea id="description" placeholder="Description" required></textarea>
@@ -30,10 +36,12 @@ function showInput() {
     const res = await fetch(url);
     const text = await res.text();
     document.getElementById("response").textContent = text;
+    document.getElementById("inputForm").reset();
   });
 }
 
 function showOutput() {
+  setActiveNav(1);
   const pin = localStorage.getItem("pin");
   fetch(`${scriptURL}?pin=${encodeURIComponent(pin)}`)
     .then(res => res.text())
@@ -45,22 +53,31 @@ function showOutput() {
       }
       const data = JSON.parse(text);
 
-      // Build table
       let html = `
-        <h2>Corrections en cours</h2>
-        <table class="outputTable">
-          <thead>
-            <tr>
-              <th>Date</th>
-              <th>Criticité</th>
-              <th>Catégorie</th>
-              <th>Description</th>
-              <th>Etat</th>
-              <th>Niveau</th>
-              <th>Signalé par</th>
-            </tr>
-          </thead>
-          <tbody>
+        <h2>Reports</h2>
+        <div class="table-container">
+          <table class="outputTable">
+            <colgroup>
+              <col> <!-- Date -->
+              <col> <!-- Criticité -->
+              <col> <!-- Catégorie -->
+              <col> <!-- Description -->
+              <col> <!-- Etat -->
+              <col> <!-- Niveau -->
+              <col> <!-- Signalé par -->
+            </colgroup>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Criticité</th>
+                <th>Catégorie</th>
+                <th>Description</th>
+                <th>Etat</th>
+                <th>Niveau</th>
+                <th>Signalé par</th>
+              </tr>
+            </thead>
+            <tbody>
       `;
 
       data.forEach(item => {
@@ -77,12 +94,13 @@ function showOutput() {
         `;
       });
 
-      html += `</tbody></table>`;
+      html += `</tbody></table></div>`;
       showSection(html);
     });
 }
 
 function showParams() {
+  setActiveNav(0);
   const html = `
     <h2>Params (Preview)</h2>
     <iframe src="${spreadsheetPreviewURL}" style="width:100%; height:80vh; border:none;"></iframe>
@@ -90,7 +108,7 @@ function showParams() {
   showSection(html);
 }
 
-// On page load, ensure PIN is valid
+// On page load, show Output by default if PIN is valid
 (async () => {
   const pin = localStorage.getItem("pin");
   if (!pin) {
@@ -102,8 +120,8 @@ function showParams() {
       localStorage.removeItem("pin");
       window.location.href = "index.html";
     } else {
-      // Default page
       showOutput();
     }
   }
 })();
+
