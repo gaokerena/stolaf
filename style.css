@@ -20,7 +20,7 @@ form input, form textarea {
   box-sizing: border-box;
 }
 
-button {
+.submitbutton {
   padding: 10px 15px;
   border: none;
   background: #444;
@@ -29,7 +29,7 @@ button {
   border-radius: 5px;
 }
 
-button:hover {
+.submitbutton:hover {
   background: #666;
 }
 
@@ -43,7 +43,7 @@ button:hover {
   background: #46b1e1;
 }
 
-.bottom-nav button {
+.navbutton {
   flex: 1;
   padding: 15px;
   font-size: 16px;
