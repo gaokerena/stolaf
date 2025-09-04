@@ -1,6 +1,7 @@
 const scriptURL = "https://script.google.com/macros/s/AKfycbxaYXlocGh2AfEbyi8KcPEeN4GNxRkXkUVwfxOZGuxQPBc48jatKK-ILhb_N4Kby8H9/exec";
 
 const spreadsheetPreviewURL = "https://docs.google.com/spreadsheets/d/1THA74IOnmlxuof-grG38y395FUAdXpVN46kQ1ZvIrqI/preview";
+
 function showSection(contentHTML) {
   const container = document.getElementById("content");
   container.innerHTML = contentHTML;
