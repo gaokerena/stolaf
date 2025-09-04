@@ -33,6 +33,47 @@ form input, form textarea {
   background: #666;
 }
 
+/* Table styles */
+.outputTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.outputTable th, .outputTable td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+  vertical-align: middle; /* center vertically */
+}
+
+.outputTable th {
+  background-color: #e97132;
+  color: white;
+  font-weight: bold;
+}
+
+/* Description column wider */
+.outputTable td:nth-child(4),
+.outputTable th:nth-child(4) {
+  width: 3fr;
+}
+
+/* Alternating row colors */
+.outputTable tbody tr:nth-child(odd) {
+  background-color: #ffffff; /* white */
+}
+
+.outputTable tbody tr:nth-child(even) {
+  background-color: #f7f7f7; /* very light grey */
+}
+
+/* Optional: horizontal scroll on small screens */
+#content {
+  overflow-x: auto;
+}
+
+
 .bottom-nav {
   position: fixed;
   bottom: 0;
