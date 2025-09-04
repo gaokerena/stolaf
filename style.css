@@ -2,7 +2,7 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background: #f7f7f7;
+  background: #f3f3f4;
 }
 
 #content {
@@ -36,7 +36,7 @@ button:hover {
   width: 100%;
   display: flex;
   justify-content: space-around;
-  background: #333;
+  background: #46b1e1;
 }
 
 .bottom-nav button {
@@ -44,4 +44,5 @@ button:hover {
   padding: 15px;
   font-size: 16px;
   border-radius: 0;
+  color: #fff;
 }
