@@ -45,9 +45,9 @@ function showOutput() {
       }
       const data = JSON.parse(text);
 
-      // Start table HTML
+      // Build table
       let html = `
-        <h2>Liste des correctifs</h2>
+        <h2>Reports</h2>
         <table class="outputTable">
           <thead>
             <tr>
@@ -63,7 +63,6 @@ function showOutput() {
           <tbody>
       `;
 
-      // Add table rows
       data.forEach(item => {
         html += `
           <tr>
@@ -82,7 +81,6 @@ function showOutput() {
       showSection(html);
     });
 }
-
 
 function showParams() {
   const html = `
