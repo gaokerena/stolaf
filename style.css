@@ -9,6 +9,10 @@ body {
   padding: 20px;
 }
 
+h2 {
+ color: #e97132;
+}
+
 form input, form textarea {
   width: 100%;
   margin-bottom: 10px;
