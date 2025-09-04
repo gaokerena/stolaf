@@ -68,13 +68,13 @@ function showOutput() {
             </colgroup>
             <thead>
               <tr>
-                <th>Date</th>
-                <th>Criticité</th>
-                <th>Catégorie</th>
-                <th>Description</th>
-                <th>Etat</th>
-                <th>Niveau</th>
-                <th>Signalé par</th>
+                <th data-column="0">Date</th>
+                <th data-column="1">Criticité</th>
+                <th data-column="2">Catégorie</th>
+                <th data-column="3">Description</th>
+                <th data-column="4">Etat</th>
+                <th data-column="5">Niveau</th>
+                <th data-column="6">Signalé par</th>
               </tr>
             </thead>
             <tbody>
@@ -96,7 +96,46 @@ function showOutput() {
 
       html += `</tbody></table></div>`;
       showSection(html);
+
+      // Make table sortable
+      makeTableSortable(".outputTable");
     });
+}
+
+function makeTableSortable(tableSelector) {
+  const table = document.querySelector(tableSelector);
+  const headers = table.querySelectorAll("th");
+
+  headers.forEach((th, index) => {
+    th.style.cursor = "pointer";
+    th.addEventListener("click", () => {
+      const tbody = table.querySelector("tbody");
+      const rows = Array.from(tbody.querySelectorAll("tr"));
+      const ascending = !th.asc;
+
+      rows.sort((a, b) => {
+        let aText = a.children[index].textContent.trim();
+        let bText = b.children[index].textContent.trim();
+
+        // Parse Date column (index 0) correctly
+        if (index === 0) {
+          aText = new Date(aText);
+          bText = new Date(bText);
+        }
+
+        return ascending
+          ? (aText > bText ? 1 : aText < bText ? -1 : 0)
+          : (aText < bText ? 1 : aText > bText ? -1 : 0);
+      });
+
+      // Remove existing rows
+      tbody.innerHTML = "";
+      rows.forEach(row => tbody.appendChild(row));
+
+      // Toggle sort direction
+      th.asc = ascending;
+    });
+  });
 }
 
 function showParams() {
