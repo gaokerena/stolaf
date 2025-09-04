@@ -54,14 +54,14 @@ function showOutput() {
       const data = JSON.parse(text);
 
       let html = `
-        <h2>Reports</h2>
+        <h2>Corrections en cours</h2>
         <div class="table-container">
           <table class="outputTable">
             <colgroup>
               <col style="width:10%">
               <col style="width:10%">
               <col style="width:10%">
-              <col style="width:30%">
+              <col style="width:50%">
               <col style="width:10%">
               <col style="width:10%">
               <col style="width:10%">
