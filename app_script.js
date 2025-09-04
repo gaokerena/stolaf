@@ -10,7 +10,7 @@ function showSection(contentHTML) {
 function showInput() {
   const pin = localStorage.getItem("pin");
   showSection(`
-    <h2>Submit Report</h2>
+    <h2>Reporter un bug</h2>
     <form id="inputForm">
       <input type="text" id="criticite" placeholder="Criticité" required>
       <textarea id="description" placeholder="Description" required></textarea>
@@ -47,7 +47,7 @@ function showOutput() {
 
       // Start table HTML
       let html = `
-        <h2>Reports</h2>
+        <h2>Liste des correctifs</h2>
         <table class="outputTable">
           <thead>
             <tr>
