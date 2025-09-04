@@ -103,7 +103,7 @@ function showParams() {
       window.location.href = "index.html";
     } else {
       // Default page
-      showInput();
+      showOutput();
     }
   }
 })();
