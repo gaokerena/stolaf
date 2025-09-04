@@ -7,12 +7,14 @@ body {
 
 #content {
   padding: 20px;
+  overflow-x: auto; /* scroll table on small screens */
 }
 
 h2 {
- color: #e97132;
+  color: #e97132;
 }
 
+/* Form inputs */
 form input, form textarea {
   width: 100%;
   margin-bottom: 10px;
@@ -33,54 +35,44 @@ form input, form textarea {
   background: #666;
 }
 
-/* Table styles */
+/* Table */
+.table-container {
+  overflow-x: auto;
+}
+
 .outputTable {
   width: 100%;
   border-collapse: collapse;
-  table-layout: auto; /* columns sized automatically */
+  table-layout: auto;
 }
 
 .outputTable th, .outputTable td {
   border: 1px solid #ccc;
   padding: 8px;
   text-align: left;
-  vertical-align: middle; /* center vertically */
+  vertical-align: middle;
 }
 
-/* Header row */
 .outputTable th {
   background-color: #e97132;
   color: white;
   font-weight: bold;
-  white-space: nowrap; /* keep header text on one line */
 }
 
-/* Description column fills remaining space */
 .outputTable td:nth-child(4),
 .outputTable th:nth-child(4) {
-  white-space: normal; /* allow wrapping */
+  white-space: normal; /* Description wraps and fills space */
 }
 
-/* All other columns fit content */
 .outputTable td:not(:nth-child(4)),
 .outputTable th:not(:nth-child(4)) {
-  white-space: nowrap;
+  white-space: nowrap; /* other columns shrink to content */
 }
 
-/* Alternating row colors */
-.outputTable tbody tr:nth-child(odd) {
-  background-color: #ffffff; /* white */
-}
+.outputTable tbody tr:nth-child(odd) { background-color: #fff; }
+.outputTable tbody tr:nth-child(even) { background-color: #f7f7f7; }
 
-.outputTable tbody tr:nth-child(even) {
-  background-color: #f7f7f7; /* very light grey */
-}
-
-/* Scrollable content on small screens */
-#content {
-  overflow-x: auto;
-}
-
+/* Bottom nav */
 .bottom-nav {
   position: fixed;
   bottom: 0;
@@ -90,15 +82,36 @@ form input, form textarea {
   justify-content: space-around;
   background: #46b1e1;
   z-index: 1000;
+  box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
 }
 
 .navbutton {
   flex: 1;
-  padding: 15px;
+  padding: 12px;
   font-size: 16px;
-  border-radius: 0;
   color: #fff;
+  border: none;
+  background: #46b1e1;
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
+  cursor: pointer;
+  transition: background 0.2s;
+  text-align: center;
+}
+
+.navbutton:hover {
+  background: #369ac9;
+}
+
+.navbutton.active {
+  background: #2a85b5;
+}
+
+/* Responsive small screen adjustments */
+@media (max-width: 400px) {
+  .navbutton {
+    font-size: 14px;
+    padding: 10px;
+  }
 }
