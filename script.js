@@ -1,4 +1,4 @@
-const scriptURL = "YOUR_DEPLOYED_APPS_SCRIPT_URL";
+const scriptURL = "https://script.google.com/macros/s/AKfycbxaYXlocGh2AfEbyi8KcPEeN4GNxRkXkUVwfxOZGuxQPBc48jatKK-ILhb_N4Kby8H9/exec";
 
 // Get stored PIN from localStorage
 function getStoredPin() {
