@@ -41,7 +41,7 @@ function showInput() {
 }
 
 function showOutput() {
-  setActiveNav(1);
+  setActiveNav(1); // Highlight Output button
   const pin = localStorage.getItem("pin");
   fetch(`${scriptURL}?pin=${encodeURIComponent(pin)}`)
     .then(res => res.text())
@@ -58,13 +58,13 @@ function showOutput() {
         <div class="table-container">
           <table class="outputTable">
             <colgroup>
-              <col> <!-- Date -->
-              <col> <!-- Criticité -->
-              <col> <!-- Catégorie -->
-              <col> <!-- Description -->
-              <col> <!-- Etat -->
-              <col> <!-- Niveau -->
-              <col> <!-- Signalé par -->
+              <col style="width:10%">
+              <col style="width:10%">
+              <col style="width:10%">
+              <col style="width:30%">
+              <col style="width:10%">
+              <col style="width:10%">
+              <col style="width:10%">
             </colgroup>
             <thead>
               <tr>
