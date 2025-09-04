@@ -14,12 +14,27 @@ h2 {
   color: #e97132;
 }
 
-/* Form inputs */
-form input, form textarea {
+/* Form inputs and textarea */
+form input,
+form textarea,
+form select {
   width: 100%;
   margin-bottom: 10px;
   padding: 8px;
   box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 14px;
+  outline: none;
+}
+
+/* Focus effect for inputs and dropdowns */
+form input:focus,
+form textarea:focus,
+form select:focus {
+  border-color: #e97132;
+  box-shadow: 0 0 3px rgba(233, 113, 50, 0.5);
 }
 
 .submitbutton {
