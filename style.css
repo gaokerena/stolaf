@@ -37,7 +37,7 @@ form input, form textarea {
 .outputTable {
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 20px;
+  table-layout: auto; /* columns sized automatically */
 }
 
 .outputTable th, .outputTable td {
@@ -47,16 +47,24 @@ form input, form textarea {
   vertical-align: middle; /* center vertically */
 }
 
+/* Header row */
 .outputTable th {
   background-color: #e97132;
   color: white;
   font-weight: bold;
+  white-space: nowrap; /* keep header text on one line */
 }
 
-/* Description column wider */
+/* Description column fills remaining space */
 .outputTable td:nth-child(4),
 .outputTable th:nth-child(4) {
-  width: 3fr;
+  white-space: normal; /* allow wrapping */
+}
+
+/* All other columns fit content */
+.outputTable td:not(:nth-child(4)),
+.outputTable th:not(:nth-child(4)) {
+  white-space: nowrap;
 }
 
 /* Alternating row colors */
@@ -68,11 +76,10 @@ form input, form textarea {
   background-color: #f7f7f7; /* very light grey */
 }
 
-/* Optional: horizontal scroll on small screens */
+/* Scrollable content on small screens */
 #content {
   overflow-x: auto;
 }
-
 
 .bottom-nav {
   position: fixed;
