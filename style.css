@@ -41,6 +41,7 @@ form input, form textarea {
   display: flex;
   justify-content: space-around;
   background: #46b1e1;
+  z-index: 1000;
 }
 
 .navbutton {
@@ -49,4 +50,7 @@ form input, form textarea {
   font-size: 16px;
   border-radius: 0;
   color: #fff;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
 }
