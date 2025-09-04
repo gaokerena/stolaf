@@ -1,23 +1,17 @@
 const scriptURL = "https://script.google.com/macros/s/AKfycbxaYXlocGh2AfEbyi8KcPEeN4GNxRkXkUVwfxOZGuxQPBc48jatKK-ILhb_N4Kby8H9/exec";
 
 // Store PIN in localStorage
-function savePin(pin) {
-  localStorage.setItem("pin", pin);
-}
+function savePin(pin) { localStorage.setItem("pin", pin); }
+function getStoredPin() { return localStorage.getItem("pin"); }
 
-// Get stored PIN
-function getStoredPin() {
-  return localStorage.getItem("pin");
-}
-
-// Validate PIN via Apps Script
+// Validate PIN by trying to fetch Output
 async function validatePin(pin) {
   const res = await fetch(`${scriptURL}?pin=${encodeURIComponent(pin)}`);
   const text = await res.text();
   return text !== "Unauthorized";
 }
 
-// Render PIN input section
+// Render PIN section
 function renderPinSection(containerId, onSuccess) {
   const container = document.getElementById(containerId);
   const storedPin = getStoredPin() || "";
@@ -38,7 +32,6 @@ function renderPinSection(containerId, onSuccess) {
     return isValid;
   };
 
-  // Auto-validate stored PIN
   if (storedPin) {
     attemptPin(storedPin).then(valid => {
       if (valid) {
@@ -66,7 +59,7 @@ function renderPinSection(containerId, onSuccess) {
   });
 }
 
-// Show input page
+// Show Input page
 function showInput() {
   renderPinSection("content", (pin) => {
     const mainContent = document.getElementById("mainContent");
@@ -88,19 +81,16 @@ function showInput() {
       const description = document.getElementById("description").value;
       const signalePar = document.getElementById("signalePar").value;
 
-      const res = await fetch(scriptURL, {
-        method: "POST",
-        body: JSON.stringify({ criticite, description, signalePar, pin }),
-        headers: { "Content-Type": "application/json" }
-      });
+      const url = `${scriptURL}?pin=${encodeURIComponent(pin)}&criticite=${encodeURIComponent(criticite)}&description=${encodeURIComponent(description)}&signalePar=${encodeURIComponent(signalePar)}`;
 
+      const res = await fetch(url);
       const text = await res.text();
       document.getElementById("response").textContent = text;
     });
   });
 }
 
-// Show output page
+// Show Output page
 function showOutput() {
   renderPinSection("content", async (pin) => {
     const mainContent = document.getElementById("mainContent");
@@ -126,4 +116,3 @@ function showOutput() {
     mainContent.innerHTML = html;
   });
 }
-
