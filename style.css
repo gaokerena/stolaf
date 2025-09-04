@@ -35,15 +35,16 @@ form input, form textarea {
   background: #666;
 }
 
-/* Table */
+/* Table container for horizontal scrolling on mobile */
 .table-container {
   overflow-x: auto;
 }
 
+/* Output Table */
 .outputTable {
   width: 100%;
   border-collapse: collapse;
-  table-layout: auto;
+  table-layout: fixed; /* ensures column ratios from colgroup are respected */
 }
 
 .outputTable th, .outputTable td {
@@ -51,26 +52,20 @@ form input, form textarea {
   padding: 8px;
   text-align: left;
   vertical-align: middle;
+  word-wrap: break-word; /* wraps text in Description */
 }
 
+/* Header row */
 .outputTable th {
   background-color: #e97132;
   color: white;
   font-weight: bold;
 }
 
-.outputTable td:nth-child(4),
-.outputTable th:nth-child(4) {
-  white-space: normal; /* Description wraps and fills space */
-}
-
-.outputTable td:not(:nth-child(4)),
-.outputTable th:not(:nth-child(4)) {
-  white-space: nowrap; /* other columns shrink to content */
-}
-
+/* Alternating row colors */
 .outputTable tbody tr:nth-child(odd) { background-color: #fff; }
 .outputTable tbody tr:nth-child(even) { background-color: #f7f7f7; }
+
 
 /* Bottom nav */
 .bottom-nav {
