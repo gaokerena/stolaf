@@ -15,7 +15,7 @@ function showInput() {
       <input type="text" id="criticite" placeholder="Criticité" required>
       <textarea id="description" placeholder="Description" required></textarea>
       <input type="text" id="signalePar" placeholder="Signalé par" required>
-      <button class="sumbitbutton" type="submit">Send</button>
+      <button class="submitbutton" type="submit">Send</button>
     </form>
     <p id="response"></p>
   `);
