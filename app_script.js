@@ -13,12 +13,18 @@ function setActiveNav(buttonIndex) {
 }
 
 function showInput() {
-  setActiveNav(2);
+  setActiveNav(2); // Highlight Input button
   const pin = localStorage.getItem("pin");
+
   showSection(`
-    <h2>Submit Report</h2>
+    <h2>Reporter un bug ou une demande d'amélioration</h2>
     <form id="inputForm">
-      <input type="text" id="criticite" placeholder="Criticité" required>
+      <select id="criticite" required>
+        <option value="" disabled selected>Choisir Criticité</option>
+        <option value="Faible">Faible</option>
+        <option value="Moyenne">Moyenne</option>
+        <option value="Elevée">Elevée</option>
+      </select>
       <textarea id="description" placeholder="Description" required></textarea>
       <input type="text" id="signalePar" placeholder="Signalé par" required>
       <button class="submitbutton" type="submit">Send</button>
@@ -39,6 +45,7 @@ function showInput() {
     document.getElementById("inputForm").reset();
   });
 }
+
 
 function showOutput() {
   setActiveNav(1); // Highlight Output button
