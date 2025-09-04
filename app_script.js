@@ -44,14 +44,45 @@ function showOutput() {
         return;
       }
       const data = JSON.parse(text);
-      let html = "<h2>Reports</h2><ul>";
+
+      // Start table HTML
+      let html = `
+        <h2>Reports</h2>
+        <table class="outputTable">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Criticité</th>
+              <th>Catégorie</th>
+              <th>Description</th>
+              <th>Etat</th>
+              <th>Niveau</th>
+              <th>Signalé par</th>
+            </tr>
+          </thead>
+          <tbody>
+      `;
+
+      // Add table rows
       data.forEach(item => {
-        html += `<li><strong>${item.date}</strong> [${item.criticite}] ${item.description} (${item.signalePar})</li>`;
+        html += `
+          <tr>
+            <td>${item.date}</td>
+            <td>${item.criticite}</td>
+            <td>${item.categorie || ''}</td>
+            <td>${item.description}</td>
+            <td>${item.etat || ''}</td>
+            <td>${item.niveau || ''}</td>
+            <td>${item.signalePar}</td>
+          </tr>
+        `;
       });
-      html += "</ul>";
+
+      html += `</tbody></table>`;
       showSection(html);
     });
 }
+
 
 function showParams() {
   const html = `
