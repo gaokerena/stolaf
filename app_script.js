@@ -148,7 +148,7 @@ function makeTableSortable(tableSelector) {
 function showParams() {
   setActiveNav(0);
   const html = `
-    <h2>Params (Preview)</h2>
+    <h2>Gestion OLAF locale LFST</h2>
     <iframe src="${spreadsheetPreviewURL}" style="width:100%; height:80vh; border:none;"></iframe>
   `;
   showSection(html);
