@@ -13,7 +13,7 @@ function setActiveNav(buttonIndex) {
 }
 
 function showInput() {
-  setActiveNav(2); // Highlight Input button
+  setActiveNav(1); // Highlight Input button
   const pin = localStorage.getItem("pin");
 
   showSection(`
@@ -48,7 +48,7 @@ function showInput() {
 
 
 function showOutput() {
-  setActiveNav(1); // Highlight Output button
+  setActiveNav(0); // Highlight Output button
   const pin = localStorage.getItem("pin");
   fetch(`${scriptURL}?pin=${encodeURIComponent(pin)}`)
     .then(res => res.text())
@@ -146,7 +146,7 @@ function makeTableSortable(tableSelector) {
 }
 
 function showParams() {
-  setActiveNav(0);
+  setActiveNav(2);
   const html = `
     <h2>Gestion OLAF locale LFST</h2>
     <iframe src="${spreadsheetPreviewURL}" style="width:100%; height:80vh; border:none;"></iframe>
