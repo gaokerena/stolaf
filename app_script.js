@@ -60,6 +60,13 @@ function showOutput() {
       }
       const data = JSON.parse(text);
 
+      // Separate "Corrigé" rows
+      const corrected = data.filter(item => item.etat && item.etat.toLowerCase() === "corrigé");
+      const others = data.filter(item => !item.etat || item.etat.toLowerCase() !== "corrigé");
+
+      // Put corrected rows at the bottom
+      const ordered = [...others, ...corrected];
+
       let html = `
         <h2>Corrections en cours</h2>
         <div class="table-container">
@@ -87,9 +94,10 @@ function showOutput() {
             <tbody>
       `;
 
-      data.forEach(item => {
+      ordered.forEach(item => {
+        const isCorrected = item.etat && item.etat.toLowerCase() === "corrigé";
         html += `
-          <tr>
+          <tr class="${isCorrected ? "corrected-row" : ""}">
             <td>${item.date}</td>
             <td>${item.criticite}</td>
             <td>${item.categorie || ''}</td>
@@ -135,15 +143,14 @@ function makeTableSortable(tableSelector) {
           : (aText < bText ? 1 : aText > bText ? -1 : 0);
       });
 
-      // Remove existing rows
       tbody.innerHTML = "";
       rows.forEach(row => tbody.appendChild(row));
 
-      // Toggle sort direction
       th.asc = ascending;
     });
   });
 }
+
 
 function showParams() {
   setActiveNav(2);
