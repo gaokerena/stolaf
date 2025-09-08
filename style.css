@@ -30,7 +30,7 @@ form select {
 }
 
 form textarea {
-  min-height: 25%;
+  min-height: 300px;
 }
 
 /* Focus effect for inputs and dropdowns */
@@ -57,7 +57,7 @@ form select:focus {
 /* Table container for horizontal scrolling on mobile */
 .table-container {
   overflow-x: auto;
-  min-width: 700px;
+  min-width: 900px;
 }
 
 /* Output Table */
