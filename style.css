@@ -86,6 +86,11 @@ form select:focus {
 .outputTable tbody tr:nth-child(odd) { background-color: #fff; }
 .outputTable tbody tr:nth-child(even) { background-color: #f7f7f7; }
 
+.corrected-row {
+  background-color: #93c47d !important;
+  color: white !important;
+  font-weight: bold;
+}
 
 /* Bottom nav */
 .bottom-nav {
