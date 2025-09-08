@@ -29,6 +29,10 @@ form select {
   outline: none;
 }
 
+form textarea {
+  min-height: 25%;
+}
+
 /* Focus effect for inputs and dropdowns */
 form input:focus,
 form textarea:focus,
@@ -53,6 +57,7 @@ form select:focus {
 /* Table container for horizontal scrolling on mobile */
 .table-container {
   overflow-x: auto;
+  min-width: 700px;
 }
 
 /* Output Table */
